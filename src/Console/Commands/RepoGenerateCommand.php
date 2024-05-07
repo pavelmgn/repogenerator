@@ -6,8 +6,9 @@ namespace Pavelmgn\RepoGenerator\Console\Commands;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Console\Command;
 
-class RepoGenerateCommand
+class RepoGenerateCommand extends Command
 {
     protected $signature = 'repo:generate {entityName: Entity name for generating objects}';
 
