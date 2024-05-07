@@ -1,0 +1,25 @@
+{
+    "name": "pavelmgn/repogenerator",
+    "description": "Pfdo repogenerator",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "role": "Developer",
+            "name": "Pavel Sidorov",
+            "email": "pavelmgn@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pavelmgn\\RepoGenerator\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "illuminate/support": "v8.83.27",
+        "illuminate/contracts": "8.83.27"
+    }
+}

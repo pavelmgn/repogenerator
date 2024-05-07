@@ -1,0 +1,102 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ controllerNamespace }};
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PfdoPackages\LaravelComponents\Controllers\Controller;
+use Throwable;
+use {{ entityNamespace }};
+use {{ responseNamespace }};
+use {{ repositoryNamespace }};
+use {{ createRequestNamespace }};
+use {{ updateRequestNamespace }};
+
+final class {{ controllerClass }} extends Controller
+{
+    public function __construct()
+    {
+    }
+
+    private function responseFields(): void
+    {
+        {{ entityClass }}::setFields({{ responseClass }}::fields());
+        {{ entityClass }}::setExtraFields({{ responseClass }}::extraFields());
+    }
+
+    public function index(Request $request)
+    {
+        $query = app({{ repositoryClass }}::class)
+            ->search($request)
+            ->setExpandWith({{ responseClass }}::expandFields())
+            ->query();
+
+        $this->responseFields();
+
+        return $this->response($query->customPaginate());
+    }
+
+    public function show(Request $request, {{ entityClass }} ${{ camelEntityClass }})
+    {
+        $this->responseFields();
+
+        return $this->response(${{ camelEntityClass }});
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function store({{ createRequestClass }} $request, {{ entityClass }} ${{ camelEntityClass }})
+    {
+        try {
+            DB::transaction(function () use ($request, ${{ camelEntityClass }}) {
+                // TODO: create mechanism
+            });
+
+            $this->responseFields();
+
+            return $this->response(${{ camelEntityClass }});
+        } catch (Throwable $exception) {
+            app(FileLog::class)->setFile('create-{{ snakeEntityClass }}')->exceptionLog($exception);
+            throw $exception;
+        }
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function update({{ updateRequestClass }} $request, {{ entityClass }} ${{ camelEntityClass }})
+    {
+        try {
+            DB::transaction(function () use ($request, ${{ camelEntityClass }}) {
+                // TODO: update mechanism
+            });
+
+            $this->responseFields();
+
+            return $this->response(${{ camelEntityClass }});
+        } catch (Throwable $exception) {
+            app(FileLog::class)->setFile('update-{{ snakeEntityClass }}')->exceptionLog($exception);
+            throw $exception;
+        }
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function destroy(Request $request, {{ entityClass }} ${{ camelEntityClass }})
+    {
+        try {
+            DB::transaction(function () use (${{ camelEntityClass }}) {
+                ${{ camelEntityClass }}->delete();
+            });
+
+            return $this->response([]);
+        } catch (Throwable $exception) {
+            app(FileLog::class)->setFile('delete-{{ snakeEntityClass }}')->exceptionLog($exception);
+            throw $exception;
+        }
+    }
+}

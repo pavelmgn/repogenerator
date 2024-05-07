@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ responseNamespace }};
+
+final class {{ responseClass }}
+{
+    public static function fields(): array
+    {
+        return [];
+    }
+
+    public static function extraFields(): array
+    {
+        return [];
+    }
+
+    public static function expandFields(): array
+    {
+        return [];
+    }
+}

@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ repositoryNamespace }};
+
+use PfdoPackages\LaravelComponents\Interfaces\SearchRepositoryInterface;
+use PfdoPackages\LaravelComponents\Repositories\CoreRepository;
+use Illuminate\Http\Request;
+use {{ entityNamespace }};
+use {{ searchNamespace }};
+
+final class {{ repositoryClass }} extends CoreRepository implements SearchRepositoryInterface
+{
+    protected function getModelClass()
+    {
+        return {{ entityClass }}::class;
+    }
+
+    public function search(Request $request)
+{
+    return new {{ searchClass }}($request);
+}
+}

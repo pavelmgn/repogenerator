@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ entityNamespace }};
+
+use Illuminate\Database\Eloquent\Model;
+use PfdoPackages\LaravelComponents\Search\Search;
+
+final class {{ entityClass }} extends Model
+{
+    
+}

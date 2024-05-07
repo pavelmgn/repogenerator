@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ updateRequestNamespace }};
+
+use PfdoPackages\LaravelComponents\Requests\ApiBaseFormRequest;
+
+class {{ updateRequestClass }} extends ApiBaseFormRequest
+{
+    public function rules(): array
+    {
+        return [];
+    }
+}
