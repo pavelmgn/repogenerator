@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Pavelmgn\RepoGenerator\Console\Commands;
 
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Illuminate\Console\Command;
 
 class RepoGenerateCommand extends Command
 {
-    protected $signature = 'repo:generate {entityName: Entity name for generating objects}';
+    protected $signature = 'repo:generate
+     {entityName : Entity name for generator}';
 
     protected $description = 'Generate';
 
