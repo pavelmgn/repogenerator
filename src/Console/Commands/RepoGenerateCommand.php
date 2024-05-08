@@ -123,6 +123,10 @@ class RepoGenerateCommand extends Command
             $content = str_replace("{{ $name }}", $value, $content);
         }
 
+        if (!file_exists(dirname($path))) {
+            File::makeDirectory(dirname($path), 0777, true);
+        }
+
         File::copy($template, $path);
         File::put($path, $content);
     }

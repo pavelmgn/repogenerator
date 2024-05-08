@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PfdoPackages\LaravelComponents\Controllers\Controller;
 use Throwable;
-use {{ entityNamespace }};
-use {{ responseNamespace }};
-use {{ repositoryNamespace }};
-use {{ createRequestNamespace }};
-use {{ updateRequestNamespace }};
+use {{ entityNamespace }}\{{ entityClass }};
+use {{ responseNamespace }}\{{ responseClass }};
+use {{ repositoryNamespace }}\{{ repositoryClass }};
+use {{ createRequestNamespace }}\{{ createRequestClass }};
+use {{ updateRequestNamespace }}\{{ updateRequestClass }};
 
 final class {{ controllerClass }} extends Controller
 {
