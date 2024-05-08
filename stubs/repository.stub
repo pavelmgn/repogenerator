@@ -7,8 +7,8 @@ namespace {{ repositoryNamespace }};
 use PfdoPackages\LaravelComponents\Interfaces\SearchRepositoryInterface;
 use PfdoPackages\LaravelComponents\Repositories\CoreRepository;
 use Illuminate\Http\Request;
-use {{ entityNamespace }};
-use {{ searchNamespace }};
+use {{ entityNamespace }}\{{ entityClass }};
+use {{ searchNamespace }}\{{ searchClass }};
 
 final class {{ repositoryClass }} extends CoreRepository implements SearchRepositoryInterface
 {
