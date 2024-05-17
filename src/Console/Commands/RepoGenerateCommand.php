@@ -49,7 +49,7 @@ class RepoGenerateCommand extends Command
             'updateRequestClass'     => 'Update' . $name . 'Request',
             'searchNamespace'        => 'App\\Search\\' . $name,
             'searchClass'            => $name . 'Search',
-            'camelEntityClass'       => $name,
+            'camelEntityClass'       => Str::camel($name),
             'snakeEntityClass'       => Str::snake($name),
         ];
     }
