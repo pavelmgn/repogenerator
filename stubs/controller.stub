@@ -38,26 +38,26 @@ final class {{ controllerClass }} extends Controller
         return $this->response($query->customPaginate());
     }
 
-    public function show(Request $request, {{ entityClass }} ${{ camelEntityClass }})
+    public function show(Request $request, {{ entityClass }} ${{ camelFirstSmallEntityClass }})
     {
         $this->responseFields();
 
-        return $this->response(${{ camelEntityClass }});
+        return $this->response(${{ camelFirstSmallEntityClass }});
     }
 
     /**
      * @throws Throwable
      */
-    public function store({{ createRequestClass }} $request, {{ entityClass }} ${{ camelEntityClass }})
+    public function store({{ createRequestClass }} $request, {{ entityClass }} ${{ camelFirstSmallEntityClass }})
     {
         try {
-            DB::transaction(function () use ($request, ${{ camelEntityClass }}) {
+            DB::transaction(function () use ($request, ${{ camelFirstSmallEntityClass }}) {
                 // TODO: create mechanism
             });
 
             $this->responseFields();
 
-            return $this->response(${{ camelEntityClass }});
+            return $this->response(${{ camelFirstSmallEntityClass }});
         } catch (Throwable $exception) {
             app(FileLog::class)->setFile('create-{{ snakeEntityClass }}')->exceptionLog($exception);
             throw $exception;
@@ -67,16 +67,16 @@ final class {{ controllerClass }} extends Controller
     /**
      * @throws Throwable
      */
-    public function update({{ updateRequestClass }} $request, {{ entityClass }} ${{ camelEntityClass }})
+    public function update({{ updateRequestClass }} $request, {{ entityClass }} ${{ camelFirstSmallEntityClass }})
     {
         try {
-            DB::transaction(function () use ($request, ${{ camelEntityClass }}) {
+            DB::transaction(function () use ($request, ${{ camelFirstSmallEntityClass }}) {
                 // TODO: update mechanism
             });
 
             $this->responseFields();
 
-            return $this->response(${{ camelEntityClass }});
+            return $this->response(${{ camelFirstSmallEntityClass }});
         } catch (Throwable $exception) {
             app(FileLog::class)->setFile('update-{{ snakeEntityClass }}')->exceptionLog($exception);
             throw $exception;
@@ -86,11 +86,11 @@ final class {{ controllerClass }} extends Controller
     /**
      * @throws Throwable
      */
-    public function destroy(Request $request, {{ entityClass }} ${{ camelEntityClass }})
+    public function destroy(Request $request, {{ entityClass }} ${{ camelFirstSmallEntityClass }})
     {
         try {
-            DB::transaction(function () use (${{ camelEntityClass }}) {
-                ${{ camelEntityClass }}->delete();
+            DB::transaction(function () use (${{ camelFirstSmallEntityClass }}) {
+                ${{ camelFirstSmallEntityClass }}->delete();
             });
 
             return $this->response([]);
